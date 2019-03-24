@@ -9,40 +9,27 @@ router.get("/", function(req,res,next) {
         var hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
+        // console.log(hbsObject);
         res.render("index", hbsObject)
     });
     
 });
 
-router.post("/api/burgers", function(req, res) {
-    burgers.insertOne("burger_name", "devoured", [req.body.burger_name, false], function(result) {
-        res.json({id: result.insertId});
+// var data1 = {
+//     test: "hello"
+// }
+// router.get("/test", function(req,res,next) {
+//     res.json({data: data1})
+    
+// });
+
+router.post("/api/new-burger", function(req, res) {
+    burgers.insertOne("burger_name", "devoured", ["base_test", false], function(result) {
+        // res.json({id: result.insertId});
+        console.log(result);
     });
 });
-
-// router.post("/api/cats", function(req, res) {
-//     cat.create([
-//       "name", "sleepy"
-//     ], [
-//       req.body.name, req.body.sleepy
-//     ], function(result) {
-//       // Send back the ID of the new quote
-//       res.json({ id: result.insertId });
-//     });
-//   });
 
 
 
 module.exports = router;
-
-
-// router.get("/", function(req, res) {
-//     cat.all(function(data) {
-//       var hbsObject = {
-//         cats: data
-//       };
-//       console.log(hbsObject);
-//       res.render("index", hbsObject);
-//     });
-//   });
