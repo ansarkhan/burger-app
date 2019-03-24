@@ -5,7 +5,7 @@ USE burgers_db;
 -- Created the table "schools" 
 CREATE TABLE burgers
 (
-  id int AUTO_INCREMENT,
+  id int NOT NULL AUTO_INCREMENT,
   burger_name varchar (60) NOT NULL,
   devoured BOOLEAN NOT NULL
 );
