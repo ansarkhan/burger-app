@@ -5,9 +5,7 @@
             <h1>Burgers!</h1>
             <h3>Insert burger image here</h3>
             {{#each burgers}}
-                <p>Name: {{burger_name}}</p>
-                <p>Devoured: {{devoured}}</p>
-                <hr>
+                {{> burgers/burger-block}}
             {{/each}}
 
 
@@ -29,3 +27,7 @@
         </div>
     </div>
 </div>
+
+                {{!-- <p>Name: {{burger_name}}</p>
+                <p>Devoured: {{devoured}}</p>
+                <hr> --}}

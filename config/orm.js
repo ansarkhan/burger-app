@@ -15,48 +15,31 @@ var orm = {
 
     },
 
-    // create: function(table, cols, vals, cb) {
-    //     var queryString = "INSERT INTO " + table;
-    
-    //     queryString += " (";
-    //     queryString += cols.toString();
-    //     queryString += ") ";
-    //     queryString += "VALUES (";
-    //     queryString += printQuestionMarks(vals.length);
-    //     queryString += ") ";
-    
-    //     console.log(queryString);
-    
-    //     connection.query(queryString, vals, function(err, result) {
-    //       if (err) {
-    //         throw err;
-    //       }
-    
-    //       cb(result);
-    //     });
-    //   },
-
-    insertOne: function(tableInput, col1, col2, vals) {
+    insertOne: function(tableInput, col1, col2, vals, cb) {
         var sql = (`INSERT INTO ${tableInput} (${col1}, ${col2}) VALUES (?,?)`);
 
         // console.log(sql);
 
-        connection.query(sql, vals, function (err, result) {
+        connection.query(sql, vals, function (err, res) {
             if (err) throw err;
-            cb(result)
+            cb(res)
         });
 
     },
 
-    updateOne: function(dev, b_name){
-        var sql = (`UPDATE burgers SET devoured = (?) WHERE burger_name = (?)`);
+    // UPDATE burgers SET devoured = 0 WHERE id = 4;
 
-        connection.con.query(sql, [dev, b_name], function(err, result) {
+    updateOne: function(tableInput, col, val1, val2, cb){
+        var sql = (`UPDATE ${tableInput} SET devoured = ${val1} WHERE ${col} = (${val2})`);
+
+        connection.query(sql, function(err, result) {
             if (err) throw err;
             console.log("1 record updated");
+            cb(result)
         });
     }
 };
 
 module.exports = orm;
+
 
