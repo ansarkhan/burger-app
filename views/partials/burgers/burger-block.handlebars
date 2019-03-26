@@ -1,5 +1,12 @@
 <li>
 	{{burger_name}}
 
-	<button class="devour-burger" data-id="{{this.id}}">DEVOUR IT!</button>
+	{{#if devoured}}
+        {{!-- do nothing --}}
+    {{else}}
+    <button class="devour-burger" data-id="{{this.id}}">DEVOUR IT!</button>
+    {{/if}}
 </li>
+
+
+{{!-- {{#if sleep}}SLEEP TIME!{{else}}WAKE UP!{{/if}} --}}

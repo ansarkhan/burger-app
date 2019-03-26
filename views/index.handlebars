@@ -4,10 +4,24 @@
 
             <h1>Burgers!</h1>
             <h3>Insert burger image here</h3>
+
+            <h3>Burgers to be devoured...</h3>
+            <ul>
             {{#each burgers}}
-                {{> burgers/burger-block}}
+                {{#unless devoured}}
+                    {{> burgers/burger-block devoured=false}}
+                {{/unless}}
+            {{/each}}
+            </ul>
+
+            <h3>Devoured burgers...</h3>
+            {{#each burgers}}
+                {{#if devoured}}
+                    {{> burgers/burger-block devoured=true}}
+                {{/if}}
             {{/each}}
 
+            
 
         </div>
     </div>
@@ -28,6 +42,3 @@
     </div>
 </div>
 
-                {{!-- <p>Name: {{burger_name}}</p>
-                <p>Devoured: {{devoured}}</p>
-                <hr> --}}
