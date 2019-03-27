@@ -42,7 +42,7 @@ router.delete("/api/burger/:id", function(req, res) {
     console.log(id);
 
     burger.deleteOne(id, function(result) {
-        console.log(result);
+        return res.status(200).end();
     });
 })
 
