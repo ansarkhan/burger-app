@@ -24,23 +24,6 @@ router.post("/api/new-burger", function(req, res) {
 });
 
 
-// router.put("/api/cats/:id", function(req, res) {
-//     var condition = "id = " + req.params.id;
-  
-//     console.log("condition", condition);
-  
-//     cat.update({
-//       sleepy: req.body.sleepy
-//     }, condition, function(result) {
-//       if (result.changedRows == 0) {
-//         // If no rows were changed, then the ID must not exist, so 404
-//         return res.status(404).end();
-//       } else {
-//         res.status(200).end();
-//       }
-//     });
-//   });
-
 router.put("/api/burger/:id", function(req, res) {
     var id = req.params.id;
     console.log(id);
@@ -53,6 +36,15 @@ router.put("/api/burger/:id", function(req, res) {
         }
     });
 });
+
+router.delete("/api/burger/:id", function(req, res) {
+    var id = req.params.id;
+    console.log(id);
+
+    burger.deleteOne(id, function(result) {
+        console.log(result);
+    });
+})
 
 // router.post("/api/new-burger", function(req, res) {
 //     res.send({ hello: 'world' });

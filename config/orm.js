@@ -27,7 +27,6 @@ var orm = {
 
     },
 
-    // UPDATE burgers SET devoured = 0 WHERE id = 4;
 
     updateOne: function(tableInput, col, val1, val2, cb){
         var sql = (`UPDATE ${tableInput} SET devoured = ${val1} WHERE ${col} = (${val2})`);
@@ -36,6 +35,16 @@ var orm = {
             if (err) throw err;
             console.log("1 record updated");
             cb(result)
+        });
+    },
+
+    deleteOne: function(tableInput, id, cb) {
+        var sql = (`DELETE FROM ${tableInput} WHERE id=${id}`);
+
+        connection.query(sql, function(err, result) {
+            if (err) throw err;
+            console.log("1 record deleted");
+            cb(result);
         });
     }
 };
